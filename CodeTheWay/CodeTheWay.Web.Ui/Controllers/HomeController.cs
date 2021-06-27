@@ -1,4 +1,5 @@
-﻿using CodeTheWay.Web.Ui.Models;
+﻿
+using CodeTheWay.Web.Ui.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
