@@ -54,6 +54,33 @@ namespace CodeTheWay.Web.Ui.Controllers
             await ShippingContainerService.Delete(student);
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> Register(ShippingContainerRegistrationViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ShippingContainer student = new ShippingContainer()
+                {
+                    Id = model.Id,
+                    Weight = model.Weight,
+                    Destination = model.Destination
+                };
+                var varstudent = await ShippingContainerService.Create(student);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var student = await ShippingContainerService.GetShippingContainer(id);
+            ShippingContainerRegistrationViewModel student1 = new ShippingContainerRegistrationViewModel()
+            {
+                Id = student.Id,
+                Weight = student.Weight,
+                Destination = student.Destination,
+            };
+            return View(student1);
+        }
 
     }
 }
